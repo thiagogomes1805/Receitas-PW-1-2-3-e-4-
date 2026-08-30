@@ -15,3 +15,7 @@ a.link{
    color: blue;
 
 }
+
+a.link:focus {
+  color: rgb(67, 65, 96);
+}   
