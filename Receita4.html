@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+   <meta charset="UTF-8">
+   <style>
+      #painelControle {
+         margin-bottom: 20px;
+      }
+
+      button {
+         padding: 8px 16px;
+         margin-right: 8px;
+         cursor: pointer;
+      }
+
+      .tabela-cervejas {
+         border-collapse: collapse;
+         width: 100%;
+         max-width: 400px;
+         font-family: Arial, sans-serif;
+      }
+
+      .tabela-cervejas th, 
+      .tabela-cervejas td {
+         border: 1px solid #ddd;
+         padding: 10px;
+         text-align: left;
+      }
+
+      .tabela-cervejas th {
+         background-color: #4CAF50;
+         color: white;
+      }
+
+      .tabela-cervejas tr:nth-child(even) {
+         background-color: #f2f2f2;
+      }
+
+      .tabela-cervejas tr:hover {
+         background-color: #ddd;
+      }
+   </style>
+</head>
+
+<body>
+   <div id="painelControle">
+      <button id="botaoCarregar">Carregar cervejas</button>
+      <button id="botaoOrdenar">Mostrar cervejas ordenadas</button>
+      <button id="botaoEmbaralhar">Embaralhar cervejas</button>
+   </div>
+
+   <div id="meuAmor"></div>
+
+   <script>
+      let cervejas = ["Guiness", "Desperados", "Becks"]
+
+      function renderizarTabela(dados) {
+         let linhas = dados.map(item => `<tr><td>${item}</td></tr>`).join("\n")
+         let htmlTabela = `
+            <table class="tabela-cervejas">
+               <thead>
+                  <tr><th>Cerveja</th></tr>
+               </thead>
+               <tbody>
+                  ${linhas}
+               </tbody>
+            </table>
+         `
+         document.getElementById("meuAmor").innerHTML = htmlTabela
+      }
+
+      function carregarDiv() {
+         renderizarTabela(cervejas)
+      }
+
+      function ordenarCervejas() {
+         let ordenadas = [...cervejas].sort()
+         renderizarTabela(ordenadas)
+      }
+
+      function embaralharCervejas() {
+         let embaralhadas = [...cervejas].toSorted(() => Math.random() - 0.5)
+         renderizarTabela(embaralhadas)
+      }
+
+      document.getElementById("botaoCarregar").addEventListener("click", carregarDiv)
+      document.getElementById("botaoOrdenar").addEventListener("click", ordenarCervejas)
+      document.getElementById("botaoEmbaralhar").addEventListener("click", embaralharCervejas)
+   </script>
+</body>
+</html>
