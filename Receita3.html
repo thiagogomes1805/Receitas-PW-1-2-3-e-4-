@@ -1,19 +1,46 @@
 <!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+   <meta charset="UTF-8">
+   <style>
+      #conteudoCerveja {
+         opacity: 0;
+         transition: opacity 0.5s ease-in-out;
+         min-height: 50px;
+      }
 
-<html>   
+      #conteudoCerveja.visivel {
+         opacity: 1;
+      }
+   </style>
+</head>
 
-   <head>
+<body>
+   <div id="painelControle">
+      <button id="botaoCarregar">Carregar cervejas...</button>
+   </div>
 
-      <meta charset="UTF-8">      
+   <div id="conteudoCerveja"></div>
 
-   </head>
+   <script>
+      function alternarCerveja() {
+         let divConteudo = document.getElementById("conteudoCerveja");
 
+         if (divConteudo.classList.contains("visivel")) {
+            divConteudo.classList.remove("visivel");
+            setTimeout(() => {
+               divConteudo.innerHTML = "";
+            }, 500);
+         } else {
+            divConteudo.innerHTML = "<h1>Guinness</h1>";
+            requestAnimationFrame(() => {
+               divConteudo.classList.add("visivel");
+            });
+         }
+      }
 
-
-   <body>
-
-      <div>Carregando cervejas...</div>            
-
-   </body>   
-
+      let botao = document.getElementById("botaoCarregar");
+      botao.addEventListener("click", alternarCerveja);
+   </script>
+</body>
 </html>
