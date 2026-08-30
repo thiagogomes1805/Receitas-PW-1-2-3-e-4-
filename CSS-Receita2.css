@@ -19,3 +19,10 @@ a.link{
 a.link:focus {
   color: rgb(67, 65, 96);
 }   
+
+.imagem-arredondada {
+  width: 492px;
+  height: 492px;
+  border-radius: 50%;
+  object-fit: cover;
+}   
